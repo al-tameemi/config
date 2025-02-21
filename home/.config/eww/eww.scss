@@ -1,0 +1,22 @@
+@import "./css/variables.scss";
+
+.top_bar, .top_bar_second {
+  border-radius: 0 0 10px 10px;
+  border: 3px solid $yellow;
+  border-top: none;
+  margin-left: 3px;
+  margin-right: 5px;
+}
+
+* {
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-bottom: 1px;
+}
+
+.workspace-entry {
+  &.current {
+    color: $red;
+    border-bottom: 2px solid $yellow;
+  }
+}

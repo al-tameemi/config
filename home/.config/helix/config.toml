@@ -1,0 +1,21 @@
+theme = "dark_plus_no_background"
+[editor]
+completion-replace = true
+line-number = "relative"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[editor.statusline]
+center = ["file-name"]
+left = ["mode", "spinner"]
+right = ["diagnostics", "separator", "selections", "separator", "position", "separator", "total-line-numbers", "separator", "file-line-ending", "separator", "file-type"]
+separator = "|"
+
+[editor.statusline.mode]
+insert = "INSERT"
+normal = "NORMAL"
+select = "SELECT"

@@ -1,0 +1,66 @@
+(include "./widgets/greeter.yuck")
+(include "./widgets/window_title.yuck")
+(include "./widgets/workspaces.yuck")
+
+(defwindow top_bar
+  :monitor 0
+  :geometry (geometry
+              :x "0%"
+              :y "0px"
+              :width "2520px" ; Total window size minus 20 gaps on each side
+              :height "2.5%"
+              :anchor "top center"
+            )
+  :stacking "fg"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  :exclusive true
+  :focusable false
+  (
+    top_bar
+  )
+)
+
+(defwindow top_bar_second
+  :monitor 1
+  :geometry (geometry
+              :x "0%"
+              :y "0px"
+              :width "1880px" ; Total window size minus 20 gaps on each side
+              :height "2.5%"
+              :anchor "top center"
+            )
+  :stacking "fg"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+  :exclusive true
+  :focusable false
+  (
+    top_bar
+  )
+)
+
+(defwidget top_bar []
+  (
+    centerbox :orientation "h"
+    (box :halign "start" :orientation "h" :space-evenly true (workspaces))
+    (box :halign "center" :orientation "h" :space-evenly true (window_title))
+    (box :halign "end" time)
+  )
+)
+
+
+(defwidget top_bar_no_title []
+  (
+    centerbox :orientation "h"
+    (box :halign "start" :orientation "h" :space-evenly true (workspaces))
+    (box :halign "center" :orientation "h")
+    (box :halign "end" time)
+  )
+)
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'"
+)

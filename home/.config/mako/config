@@ -1,0 +1,9 @@
+font=FontAwesome 10
+background-color=#181818
+text-color=#c8c8c8
+border-color=#585858
+border-size=2
+border-radius=10
+anchor=bottom-center
+margin=10
+default-timeout=10000
