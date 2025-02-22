@@ -10,14 +10,7 @@
     initrd.systemd.enable = true;
     consoleLogLevel = 0;
     initrd.verbose = false;
-    plymouth.enable = false;
     plymouth.theme = "bgrt";
-    plymouth.themePackages = with pkgs; [
-      # By default we would install all themes
-      (adi1090x-plymouth-themes.override {
-        selected_themes = [ "colorful_loop" ];
-      })
-    ];
     kernelParams = [
       "splash"
       "quiet"
