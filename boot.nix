@@ -24,8 +24,6 @@
       "loglevel=3"
       "boot.shell_on_fail"
     ];
-    # kernelPackages = pkgs.linuxPackages_zen;
-    kernelPackages = pkgs.linuxPackages_cachyos;
     loader.timeout = 0;
   };
   # services.scx.enable = true; # by default uses scx_rustland scheduler
