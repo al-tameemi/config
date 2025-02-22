@@ -10,10 +10,10 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration-nixos.nix
+        ./nixos/configuration.nix
         ./configuration.nix
-        ./hardware-configuration.nix
-        ./mounts.nix
+        ./nixos/hardware-configuration.nix
+        ./nixos/mounts.nix
         chaotic.nixosModules.default
       ];
     };
@@ -21,9 +21,9 @@
     nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration-framework.nix
+        ./framework/configuration.nix
         ./configuration.nix
-        ./hardware-configuration-framework.nix
+        ./framework/hardware-configuration.nix
       ];
     };
   };
