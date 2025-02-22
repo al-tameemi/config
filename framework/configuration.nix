@@ -1,5 +1,5 @@
 
 { config, pkgs, ... }:
 {
-	system.stateVersion = "25.04";
+	system.stateVersion = "24.11";
 }
