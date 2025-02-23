@@ -24,6 +24,7 @@
         ./framework/configuration.nix
         ./configuration.nix
         ./framework/hardware-configuration.nix
+        ./framework/suspend-and-hibernate.nix
       ];
     };
   };

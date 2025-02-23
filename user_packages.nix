@@ -64,6 +64,7 @@ let
   miscInstalls = with pkgs; [
     fish
     nushell
+    zathura
     firefox-beta
     ffmpeg
     # blender # currently broken :)
