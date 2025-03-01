@@ -35,6 +35,7 @@ let
 
   devInstalls = with pkgs; [
     python3
+    rustup
     jetbrains.rust-rover
     helix
     gnome-boxes
