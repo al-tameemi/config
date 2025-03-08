@@ -66,7 +66,6 @@ let
     fish
     nushell
     zathura
-    firefox-beta
     ffmpeg
     # blender # currently broken :)
     fastfetch
