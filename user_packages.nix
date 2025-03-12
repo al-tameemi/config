@@ -31,6 +31,8 @@ let
     bottles
     heroic
     lutris
+    # protonplus
+    # protonup-qt
   ];
 
   devInstalls = with pkgs; [
