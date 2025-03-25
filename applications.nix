@@ -26,10 +26,10 @@
     enable = true;
     args = ["-O DP-1"];
   };
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSOR = "1";
@@ -79,9 +79,11 @@
     winetricks
     libsForQt5.polkit-kde-agent
     polkit_gnome
+    gnome-keyring
     brightnessctl
     ly
     cachix
+    xwayland-satellite # For niri xwayland support
     zoxide
     gnome-themes-extra
     scanmem

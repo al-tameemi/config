@@ -8,3 +8,4 @@ home/.config/*
 !home/.config/mako
 !home/.config/rofi
 !home/.config/waybar
+!home/.config/niri

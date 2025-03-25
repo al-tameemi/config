@@ -2,6 +2,18 @@
 let
   baseconfig = { allowUnfree = true; };
   small-unstable = import <nixos-unstable-small> { config = baseconfig; };
+
+  vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
+    src = (builtins.fetchTarball {
+      url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
+      sha256 = "0r5myibdybafbw6qyf704gfng4xn56a7s1qcdwrxcq165hmbc20n";
+    });
+    version = "latest";
+
+    buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
+  });
+
+
   fontInstalls = with pkgs; [
     jetbrains-mono
     papirus-icon-theme
@@ -38,6 +50,7 @@ let
   devInstalls = with pkgs; [
     python3
     rustup
+    code-cursor
     jetbrains.rust-rover
     helix
     gnome-boxes
@@ -48,7 +61,7 @@ let
     ghostty
     wezterm
     git
-    vscode
+    vscode-insiders
   ];
 
   hyprlandInstalls = with pkgs; [
@@ -66,6 +79,8 @@ let
 
   miscInstalls = with pkgs; [
     fish
+    fuzzel
+    swaylock
     nushell
     zathura
     ffmpeg

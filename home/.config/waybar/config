@@ -37,7 +37,7 @@
         "format-icons": [""],
         "tooltip": false,
         // "on-click": "/home/mohammed/.local/bin/power_menu -m 'Are you sure you want to leave?'",
-        "on-click": "hyprctl dispatch exit"
+        "on-click": "niri msg -j action quit"
     },
 
     "custom/restart": {

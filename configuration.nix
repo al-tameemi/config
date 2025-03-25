@@ -21,8 +21,9 @@
     192.168.1.1 router
   '';
   # Set your time zone.
-  time.timeZone = "America/Denver";
-
+  # time.timeZone = "America/Denver";
+  services.automatic-timezoned.enable = true;
+  
   # Select internationalisation
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -58,8 +59,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "gnome";
+  programs.niri.enable = true; 
   # Enable KDE desktop environment
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   # fix sshaskpass
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
@@ -107,9 +109,12 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    # enabled by niri
+    # wlr.enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+      # xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
     ];
   };
 
