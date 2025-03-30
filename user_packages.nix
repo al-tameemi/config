@@ -62,6 +62,7 @@ let
     wezterm
     git
     vscode-insiders
+    code-cursor
   ];
 
   hyprlandInstalls = with pkgs; [
@@ -82,6 +83,7 @@ let
     fuzzel
     swaylock
     nushell
+    floorp
     zathura
     ffmpeg
     # blender # currently broken :)

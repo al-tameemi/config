@@ -2,6 +2,11 @@ theme = "dark_plus_no_background"
 [editor]
 completion-replace = true
 line-number = "relative"
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+other-lines = "error"
+cursor-line = "error"
 
 [editor.file-picker]
 hidden = false
