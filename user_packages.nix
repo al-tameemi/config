@@ -82,6 +82,7 @@ let
     fish
     fuzzel
     swaylock
+    swayidle
     nushell
     floorp
     zathura

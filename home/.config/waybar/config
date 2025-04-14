@@ -3,9 +3,9 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "margin": "9 13 -10 18",
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "cpu", "custom/mem", "hyprland/submap"],
+    "modules-left": ["cpu", "custom/mem"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "tray", "custom/power"],
+    "modules-right": ["pulseaudio", "tray", "backlight", "battery", "custom/power"],
 
 
     //***************************
@@ -72,6 +72,26 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%a, %d %b, %I:%M %p}",
         "on-click": "makoctl restore",
+    },
+
+    "battery": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h{M}m",
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false,
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
     },
 
     // "custom/weather": {
