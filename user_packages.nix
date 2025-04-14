@@ -6,7 +6,7 @@ let
   vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
     src = (builtins.fetchTarball {
       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-      sha256 = "165ngh1r4angdjz49nnzvg1brq81msp72w7wcx3xrdphj9k577c0";
+      sha256 = "16n7mckwaiw6ckllp1byg2jzq6r7480jj5r4nsk57c1rz58s7gjv";
     });
     version = "latest";
 
