@@ -6,6 +6,16 @@
 spawn-at-startup "waybar"
 spawn-at-startup "swayidle"
 
+cursor {
+    xcursor-size 48
+}
+
+// Xwayland support
+spawn-at-startup "xwayland-satellite"
+environment {
+    DISPLAY ":0"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
@@ -68,6 +78,19 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+output "DP-2" {
+    mode "3840x2160@239.991"
+    scale 1.5
+    transform "normal"
+    position x=0 y=0
+}
+output "HDMI-A-1" {
+    mode "1920x1080@74.973"
+    scale 1
+    transform "normal"
+    position x=2560 y=360 // Because 4k is scaled to 1.5 (1440p)
+}
+
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
