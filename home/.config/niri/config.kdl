@@ -6,12 +6,18 @@
 spawn-at-startup "waybar"
 spawn-at-startup "swayidle"
 
+// Wallpaper
+spawn-at-startup "swww-daemon" 
+spawn-at-startup "swww img ./Pictures/wallhaven-x6x3gz.png"
+
+
+// Xwayland support
+spawn-at-startup "xwayland-satellite"
+
 cursor {
     xcursor-size 48
 }
 
-// Xwayland support
-spawn-at-startup "xwayland-satellite"
 environment {
     DISPLAY ":0"
 }
@@ -367,6 +373,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T { spawn "alacritty"; }
+    Mod+Return { spawn "alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
 
@@ -445,8 +452,13 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    Mod+U              {
+        spawn "/home/mohammed/.config/niri/scripts/workspace_down.sh";
+    }
+    Mod+I              {
+         // focus-workspace-up;
+        spawn "/home/mohammed/.config/niri/scripts/workspace_up.sh";
+    }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }

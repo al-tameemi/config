@@ -6,7 +6,7 @@ let
   vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
     src = (builtins.fetchTarball {
       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-      sha256 = "16n7mckwaiw6ckllp1byg2jzq6r7480jj5r4nsk57c1rz58s7gjv";
+      sha256 = "01ln0dv9f3dpvh9q2jplmjv8ldidpxgycl0k5nnrdkkzn28r60y2";
     });
     version = "latest";
 
@@ -82,6 +82,7 @@ let
     fish
     fuzzel
     swaylock
+    swww
     swayidle
     nushell
     floorp
