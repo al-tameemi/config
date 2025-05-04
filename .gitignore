@@ -9,3 +9,5 @@ home/.config/*
 !home/.config/rofi
 !home/.config/waybar
 !home/.config/niri
+!home/.config/fuzzel
+!home/.config/swaylock
