@@ -81,7 +81,8 @@ let
   miscInstalls = with pkgs; [
     fish
     fuzzel
-    swaylock
+    # swaylock
+    swaylock-effects
     swww
     swayidle
     nushell

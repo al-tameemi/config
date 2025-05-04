@@ -8,8 +8,7 @@ spawn-at-startup "swayidle"
 
 // Wallpaper
 spawn-at-startup "swww-daemon" 
-spawn-at-startup "swww img ./Pictures/wallhaven-x6x3gz.png"
-
+spawn-at-startup "swww img ./Pictures/wallhaven-gpee1q.jpg -t grow --transition-duration 2 --transition-fps 60 --transition-pos top"
 
 // Xwayland support
 spawn-at-startup "xwayland-satellite"
@@ -84,11 +83,12 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-2" {
+output "DP-1" {
     mode "3840x2160@239.991"
     scale 1.5
     transform "normal"
     position x=0 y=0
+    variable-refresh-rate on-demand=true
 }
 output "HDMI-A-1" {
     mode "1920x1080@74.973"
@@ -197,7 +197,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        // active-color "#7fc8ff"
+        active-gradient from="#ffcd75" to="#ff8375" angle=45
 
         // Color of the ring on inactive monitors.
         inactive-color "#505050"
@@ -375,7 +376,7 @@ binds {
     Mod+T { spawn "alacritty"; }
     Mod+Return { spawn "alacritty"; }
     Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Super+Alt+L { spawn "swaylock" "--clock" "--indicator" "--color" "000000ff" "--grace" "2" "--inside-color" "2c2c2cff" "--line-color" "00000000" "--ring-color" "75ccffff" "--key-hl-color" "ffffff" "--screenshots" "--effect-blur" "20x10" "--effect-vignette" "0.5:0.5" "--text-color" "ffffff"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -452,13 +453,8 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              {
-        spawn "/home/mohammed/.config/niri/scripts/workspace_down.sh";
-    }
-    Mod+I              {
-         // focus-workspace-up;
-        spawn "/home/mohammed/.config/niri/scripts/workspace_up.sh";
-    }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
@@ -479,10 +475,10 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-window-down-or-column-right; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-window-up-or-column-left; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
@@ -513,6 +509,7 @@ binds {
     //
     // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
     // will all refer to the 3rd workspace.
+    Alt+Tab { focus-monitor-next; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
