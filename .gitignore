@@ -11,3 +11,4 @@ home/.config/*
 !home/.config/niri
 !home/.config/fuzzel
 !home/.config/swaylock
+!home/.config/swayidle
