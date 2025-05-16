@@ -50,6 +50,8 @@ let
   devInstalls = with pkgs; [
     python3
     rustup
+    # Currently broken, change later
+    # haskellPackages.ghcup
     code-cursor
     jetbrains.rust-rover
     helix
@@ -61,8 +63,9 @@ let
     ghostty
     wezterm
     git
-    vscode-insiders
-    code-cursor
+    #vscode-insiders
+    #code-cursor
+    zed-editor
   ];
 
   hyprlandInstalls = with pkgs; [
