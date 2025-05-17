@@ -52,7 +52,6 @@ let
     rustup
     # Currently broken, change later
     # haskellPackages.ghcup
-    code-cursor
     jetbrains.rust-rover
     helix
     gnome-boxes
@@ -101,7 +100,7 @@ let
     protonvpn-gui
     pavucontrol
     # xwaylandvideobridge
-    vesktop
+    # vesktop
     socat
     jq
     libreoffice

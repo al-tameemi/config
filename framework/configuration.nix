@@ -8,4 +8,6 @@
 	security.pam.services.swaylock.fprintAuth = false;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 	boot.plymouth.enable = true;
+	services.fwupd.enable = true;
+	services.power-profiles-daemon.enable = true;
 }
