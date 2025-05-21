@@ -50,6 +50,7 @@ let
   ];
 
   devInstalls = with pkgs; [
+    jujutsu
     python3
     rustup
     # Currently broken, change later
@@ -64,7 +65,7 @@ let
     ghostty
     wezterm
     git
-    #vscode-insiders
+    vscode
     #code-cursor
     zed-editor
   ];
