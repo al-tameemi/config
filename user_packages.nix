@@ -19,6 +19,8 @@ let
     papirus-icon-theme
     # nerdfonts
     font-awesome
+    source-han-sans
+    source-han-serif
   ];
 
   # kde-catppuccin = pkgs.catppuccin-kde.override {
