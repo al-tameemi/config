@@ -1,4 +1,12 @@
-color=242424
-indicator-thickness=5
-ring-color=34a1eb
-inside-color=242424
+clock
+indicator
+color=000000ff
+grace=2
+inside-color=2c2c2cff
+line-color=00000000
+ring-color=75ccffff
+key-hl-color=ffffff
+image=./Pictures/wallhaven-gpee1q.jpg
+effect-blur=20x10
+effect-vignette=0.5:0.5
+text-color=ffffff
