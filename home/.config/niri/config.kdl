@@ -377,7 +377,7 @@ binds {
     Mod+T { spawn "alacritty"; }
     Mod+Return { spawn "alacritty"; }
     Mod+D { spawn "fuzzel"; }
-    Super+Alt+L { spawn "swaylock" "--clock" "--indicator" "--color" "000000ff" "--grace" "2" "--inside-color" "2c2c2cff" "--line-color" "00000000" "--ring-color" "75ccffff" "--key-hl-color" "ffffff" "-i" "./Pictures/wallhaven-gpee1q.jpg" "--effect-blur" "20x10" "--effect-vignette" "0.5:0.5" "--text-color" "ffffff"; }
+    Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
