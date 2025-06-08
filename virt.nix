@@ -14,6 +14,9 @@
     win-virtio
     win-spice
     adwaita-icon-theme
+    dive
+    podman-tui
+    docker-compose
   ];
   
   virtualisation = {
@@ -26,6 +29,12 @@
       };
     };
     spiceUSBRedirection.enable = true;
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
   services.spice-vdagentd.enable = true;
 }
