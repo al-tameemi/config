@@ -15,6 +15,11 @@
     fsType = "ext4";
   };
 
+  fileSystems."/drives/NVME2" = {
+    device = "/dev/disk/by-uuid/e35b836f-f728-4184-b4c0-067f46fbd524";
+    fsType = "ext4";
+  };
+
   fileSystems."/drives/SSD0" = {
     device = "/dev/disk/by-uuid/1bcabe72-221c-4be6-b735-2c6755ca0182";
     fsType = "ext4";
