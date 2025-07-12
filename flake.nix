@@ -25,7 +25,7 @@
         ./framework/configuration.nix
         ./configuration.nix
         ./framework/hardware-configuration.nix
-        # ./framework/suspend-and-hibernate.nix
+        ./framework/suspend-and-hibernate.nix
         nixos-hardware.nixosModules.framework-13-7040-amd
       ];
     };
