@@ -19,7 +19,7 @@
     pkg-config
     libgda6 
     gsound
-    steam-fhsenv-without-steam
+    # steam-fhsenv-without-steam
   ];
   programs.steam.enable = true;
   programs.steam.gamescopeSession = {
@@ -86,10 +86,12 @@
     xwayland-satellite # For niri xwayland support
     zoxide
     gnome-themes-extra
-    scanmem
+    # scanmem
     inter
     terminus_font
     ripgrep
+    sbctl
+    niv
   ];
 
   programs.fish.enable = true;

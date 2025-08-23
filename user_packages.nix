@@ -55,7 +55,7 @@ let
     rustup
     # Currently broken, change later
     # haskellPackages.ghcup
-    jetbrains.rust-rover
+    # jetbrains.rust-rover
     helix
     gnome-boxes
     neovim
