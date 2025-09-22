@@ -1,14 +1,14 @@
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
+        // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 spawn-at-startup "swayidle"
 
 // Wallpaper
-spawn-at-startup "swww-daemon" 
-spawn-at-startup "swww img /home/mohammed/Pictures/wallhaven-vq898p.png -t grow --transition-duration 2 --transition-fps 60 --transition-pos top"
+// spawn-at-startup "swww-daemon" 
+// spawn-at-startup "swww img /home/mohammed/Pictures/wallhaven-vq898p.png -t grow --transition-duration 2 --transition-fps 60 --transition-pos top"
 spawn-at-startup "wl-paste --watch cliphist store"
 // Xwayland support
 spawn-at-startup "xwayland-satellite"
@@ -132,8 +132,9 @@ output "HDMI-A-1" {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
+    background-color "#000000"
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 0
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -186,7 +187,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 3
@@ -225,11 +226,11 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        //         off
         // on
 
-        width 4
-        active-color "#ffc875"
+        width 2
+        active-gradient to="#75ffc8" from="#75acff" angle=45
         inactive-color "#505050"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -356,7 +357,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 

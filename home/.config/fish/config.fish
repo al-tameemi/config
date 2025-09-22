@@ -8,18 +8,15 @@ set -g __fish_home_manager_config_sourced 1
 # source /nix/store/9ms4j1mw7zwfx47a98dkp6fvr1nzi5sq-hm-session-vars.fish
 source $HOME/.config/fish/zoxide.fish
 
-
 status is-login; and begin
 
     # Login shell initialisation
-
 
 end
 
 status is-interactive; and begin
 
     # Abbreviations
-
 
     # Aliases
     alias gamemode-proton-run 'gamemoderun /home/mohammed/Drives/nvme1n1p5/SteamLibrary/steamapps/common/Proton - Experimental/proton run'
@@ -46,5 +43,8 @@ status is-interactive; and begin
         set fish_complete_path $prev "/home/mohammed/.local/share/fish/home-manager_generated_completions" $post
     end
 
+end
 
+function fish_command_not_found
+    /run/current-system/sw/bin/command-not-found $argv[1]
 end

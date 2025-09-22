@@ -12,7 +12,8 @@
   system.stateVersion = "24.11"; # Keep
 
   nix.optimise.automatic = true;
-
+  programs.command-not-found.enable = true;
+  
   # Enable networking
   networking.networkmanager.enable = true;
   networking.extraHosts =
@@ -59,6 +60,9 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "gnome";
+  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  
   programs.niri.enable = true; 
   # Enable KDE desktop environment
   # services.desktopManager.plasma6.enable = true;

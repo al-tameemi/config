@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "margin": "9 13 -10 18",
+    "margin": "0 0 0 0",
     // Choose the order of the modules
     "modules-left": ["cpu", "custom/mem"],
     "modules-center": ["clock"],

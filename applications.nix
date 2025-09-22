@@ -21,10 +21,17 @@
     gsound
     # steam-fhsenv-without-steam
   ];
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession = {
+
+  programs.steam = {
     enable = true;
-    args = ["-O DP-1"];
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true; 
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        libkrb5
+        keyutils
+      ];
+    };
   };
   # programs.hyprland = {
   #   enable = true;
@@ -77,7 +84,7 @@
     libiconv 
     wineWowPackages.waylandFull
     winetricks
-    libsForQt5.polkit-kde-agent
+    kdePackages.polkit-kde-agent-1
     polkit_gnome
     gnome-keyring
     brightnessctl

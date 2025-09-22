@@ -36,6 +36,7 @@ let
     gnomeExtensions.pano # Currently borked on gnome 46
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
+    gnomeExtensions.status-icons
   ];
 
   gamingInstalls = with pkgs; [
@@ -45,6 +46,7 @@ let
     bottles
     heroic
     lutris
+    r2modman
     # protonplus
     # protonup-qt
   ];
@@ -71,7 +73,7 @@ let
   ];
 
   hyprlandInstalls = with pkgs; [
-    rofi-wayland
+    rofi
     wl-clipboard
     cliphist
     waybar
@@ -90,8 +92,9 @@ let
     swaylock-effects
     swww
     swayidle
+    quickshell
     nushell
-    floorp
+    floorp-bin
     zathura
     ffmpeg
     # blender # currently broken :)

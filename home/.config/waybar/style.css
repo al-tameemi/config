@@ -1,137 +1,44 @@
 * {
-    border: 2px #eed49f;
-    /* background-color: rgba(0, 0, 0, 0.8); */
+    /* border: 2px #eed49f; */
+    /* background-color: rgb(30, 30, 30); */
     /* border-size: 2px; */
-    border-radius: 10px;
+    border-radius: 0px;
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, JetBrains Mono Bold, sans-serif;
     font-size: 13px;
     min-height: 30px;
+    background: rgb(0, 0, 0);
 }
 
 window#waybar {
     background: transparent;
+    border: 2px #eed49f;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-#workspaces {
-    margin-right: 8px;
-    border-radius: 10px;
-    transition: none;
-    /* background: #383c4a; */
-    /* background: rgba(56, 60, 74, 0.5); */
-    background: rgba(24, 24, 24, 0.8);
-}
-
-#workspaces button {
-    transition: none;
-    /* color: #7c818c; */
-    color: #bec5d4;
-    background: transparent;
-    padding: 5px;
-    font-size: 14px;
-}
-
-#workspaces button.persistent {
-    color: #7c818c;
-    font-size: 12px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-radius: inherit;
-    color: #ffffff;
-    /* background: #7c818c; */
-    background: rgba(90, 90, 90, 0.8);
-}
-
-#workspaces button.active {
-    /* background: #4e5263; */
-
-    background: rgba(24, 24, 24, 1);
-    color: white;
-    border-radius: inherit;
-}
-
-#language {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#keyboard-state {
-    margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#custom-pacman {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#custom-mail {
-    margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#submap {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
 #clock {
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 0px;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
 
-    background: rgba(24, 24, 24, 0.8);
-}
-
-#custom-weather {
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    background: rgb(30, 30, 30);
 }
 
 #pulseaudio {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 0px;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
 }
 
 #pulseaudio.muted {
@@ -143,11 +50,11 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 0px 0px 0;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
 }
 
 #custom-mem * {
@@ -159,37 +66,23 @@ window#waybar.hidden {
     margin-right: 0;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0px 0 0 0px;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
     border-right: 1px solid rgb(64, 64, 64);
     
-}
-
-#temperature {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
 }
 
 #backlight {
     margin-right: 0;
     padding-left: 16px;
     padding-right: 8px;
-    border-radius: 10px 0 0 10px;
+    border-radius: 0px 0 0 0px;
     transition: none;
     color: #ffffff;
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
     border-right: 1px solid rgb(64, 64, 64);
 }
 
@@ -197,10 +90,10 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 8px;
     padding-right: 16px;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 0px 0px 0;
     transition: none;
     color: #ffffff;
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
 }
 
 #battery.charging {
@@ -226,22 +119,22 @@ window#waybar.hidden {
 #tray {
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 0px;
     margin-right: 8px;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
 }
 
 #custom-power {
     padding-left: 16px;
     padding-right: 17px;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 0px 0px 0px 0px;
     transition: none;
     color: #ffffff;
     /* background: #383c4a; */
-    background: rgba(24, 24, 24, 0.8);
+    background: rgb(30, 30, 30);
 }
 
 
@@ -259,7 +152,7 @@ window#waybar.hidden {
 #custom-logout {
     padding-left: 16px;
     padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 0px 0px 0px 0px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
