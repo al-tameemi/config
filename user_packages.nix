@@ -63,8 +63,6 @@ let
     neovim
     curl
     alacritty
-    kitty
-    ghostty
     wezterm
     git
     vscode
