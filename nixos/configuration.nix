@@ -8,7 +8,10 @@
 	'';
 	services.scx = {
 		enable = true;
-		scheduler = "scx_bpfland";
+		scheduler = "scx_flash";
+		extraArgs = [
+			"-m all"
+		];
 	};
 	boot.kernelPackages = pkgs.linuxPackages_zen;
 }
