@@ -10,7 +10,7 @@
 		enable = true;
 		scheduler = "scx_flash";
 		extraArgs = [
-			"-m all"
+			"-m"  "all"
 		];
 	};
 	boot.kernelPackages = pkgs.linuxPackages_zen;
