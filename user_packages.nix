@@ -99,9 +99,8 @@ let
     fastfetch
     neo-cowsay
     fortune-kind
-    guvcview
     # cider
-    protonvpn-gui
+    # protonvpn-gui # Broken waiting on 461528
     pavucontrol
     # xwaylandvideobridge
     # vesktop
