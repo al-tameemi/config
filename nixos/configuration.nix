@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 {
+  boot.loader.systemd-boot.enable = lib.mkForce false;
 	system.stateVersion = "24.11";
   boot.loader.systemd-boot.enable = lib.mkForce false;
 	networking.hostName = "nixos";
