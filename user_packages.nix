@@ -3,6 +3,7 @@ let
   baseconfig = { allowUnfree = true; };
   small-unstable = import <nixos-unstable-small> { config = baseconfig; };
 
+  mpv-full = (pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; });
   vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
     src = (builtins.fetchTarball {
       url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
@@ -111,6 +112,19 @@ let
     signal-desktop
     easyeffects
     zellij
+    mpv-full
+    # Video/Audio data composition framework tools like "gst-inspect", "gst-launch" ...
+    gst_all_1.gstreamer
+    # Common plugins like "filesrc" to combine within e.g. gst-launch
+    gst_all_1.gst-plugins-base
+    # Specialized plugins separated by quality
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+    # Plugins to reuse ffmpeg to play almost every video format
+    gst_all_1.gst-libav
+    # Support the Video Audio (Hardware) Acceleration API
+    gst_all_1.gst-vaapi
   ];
 in
 {
