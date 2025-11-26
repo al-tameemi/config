@@ -16,6 +16,7 @@
       "quiet"
       "loglevel=3"
       "boot.shell_on_fail"
+      "preempt=full"
     ];
     loader.timeout = 0;
   };

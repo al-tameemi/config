@@ -38,6 +38,8 @@ let
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     gnomeExtensions.status-icons
+    gnomeExtensions.all-in-one-clipboard
+    gnomeExtensions.clipboard-history
   ];
 
   gamingInstalls = with pkgs; [
