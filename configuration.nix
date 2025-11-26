@@ -65,7 +65,7 @@
   
   programs.niri.enable = true; 
   # Enable KDE desktop environment
-  # services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
   # fix sshaskpass
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
@@ -126,4 +126,6 @@
   # default shell
   users.defaultUserShell = pkgs.fish;
   networking.firewall.enable = false;
+
+  systemd.services."prepare-kexec".wantedBy = [ "multi-user.target" ];
 }
