@@ -1,8 +1,10 @@
 theme = "dark_plus_no_background"
+
 [editor]
 completion-replace = true
 line-number = "relative"
 end-of-line-diagnostics = "hint"
+bufferline = "always"
 
 [editor.inline-diagnostics]
 other-lines = "error"
