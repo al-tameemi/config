@@ -95,7 +95,7 @@ let
     swayidle
     quickshell
     nushell
-    floorp-bin
+    # floorp-bin
     zathura
     ffmpeg
     # blender # currently broken :)

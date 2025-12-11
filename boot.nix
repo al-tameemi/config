@@ -3,7 +3,6 @@
 {
 
   boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
     loader.efi.canTouchEfiVariables = true;
 
     supportedFilesystems = [ "ntfs" ];

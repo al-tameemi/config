@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
 	system.stateVersion = "24.11";
+  boot.loader.systemd-boot.enable = lib.mkForce false;
 	networking.hostName = "nixos";
 	powerManagement.cpuFreqGovernor = "performance";
 	services.udev.extraRules = ''
