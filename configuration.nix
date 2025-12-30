@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
+  nix.settings = {
+    download-buffer-size = 524288000; # 500 MiB
+  };
   imports =
     [
       ./common_mounts.nix
@@ -10,12 +13,17 @@
     ];
 
   system.stateVersion = "24.11"; # Keep
-
+  nix.settings.trusted-users = [ "root" "mohammed" ];
   nix.optimise.automatic = true;
   programs.command-not-found.enable = true;
   
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
   networking.extraHosts =
   ''
     192.168.1.22 server altamemr01
@@ -41,7 +49,7 @@
   };
 
   environment.sessionVariables = rec {
-    SHELL = "${pkgs.fish}/bin/fish";
+    SHELL = "${pkgs.nushell}/bin/nu";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     NIXOS_OZONE_WL = "1";
   };
@@ -53,10 +61,6 @@
   services.xserver.enable = true;
   ###################### ENVIRONMENTS #############################
   # Enable the GNOME Desktop Environment.
-  # services.displayManager.sddm = {
-    # enable = true;
-    # wayland.enable = true;
-  # };
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
   services.displayManager.defaultSession = "gnome";
@@ -122,9 +126,21 @@
     ];
   };
 
+  security.pam.services = {
+    greetd.enableGnomeKeyring = true;
+    greetd-password.enableGnomeKeyring = true;
+    login.enableGnomeKeyring = true;
+  };
+
+  services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
+
+  services.xserver.displayManager.sessionCommands = ''
+    eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
+    export SSH_AUTH_SOCK
+  '';
 
   # default shell
-  users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.nushell;
   networking.firewall.enable = false;
 
   systemd.services."prepare-kexec".wantedBy = [ "multi-user.target" ];

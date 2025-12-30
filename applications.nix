@@ -79,7 +79,6 @@
     killall
     corectrl
     htop
-    fish
     gamemode
     libiconv 
     wineWowPackages.waylandFull
@@ -100,8 +99,6 @@
     sbctl
     niv
   ];
-
-  programs.fish.enable = true;
 
   services.flatpak.enable = true;
 }

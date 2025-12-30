@@ -1,4 +1,4 @@
-{ config, pkgs, fetchzip, ...}:
+{ config, pkgs, fetchzip, inputs, ...}:
 let
   baseconfig = { allowUnfree = true; };
   small-unstable = import <nixos-unstable-small> { config = baseconfig; };
@@ -59,6 +59,8 @@ let
     python3
     rustup
     devenv
+    lldb
+    claude-code
     # Currently broken, change later
     # haskellPackages.ghcup
     jetbrains.rust-rover
@@ -72,6 +74,8 @@ let
     vscode
     #code-cursor
     zed-editor
+    podman-desktop
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   hyprlandInstalls = with pkgs; [
@@ -88,8 +92,9 @@ let
   ];
 
   miscInstalls = with pkgs; [
-    fish
     fuzzel
+    foliate
+    ungoogled-chromium
     # swaylock
     swaylock-effects
     swww
@@ -132,5 +137,5 @@ let
 in
 {
   users.users.mohammed.packages = fontInstalls ++ gnomeInstalls ++ gamingInstalls ++ miscInstalls ++ devInstalls ++ hyprlandInstalls;
-  # users.users.mohammed.shell = pkgs.nushell;
+  users.users.mohammed.shell = pkgs.nushell;
 }
