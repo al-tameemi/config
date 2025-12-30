@@ -11,11 +11,17 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, chaotic, nixos-hardware, lanzaboote, ... }@inputs: {
+  outputs = { self, nixpkgs, chaotic, nixos-hardware, lanzaboote, noctalia, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
         ./nixos/configuration.nix
         ./configuration.nix
@@ -35,6 +41,7 @@
 
     nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
         ./framework/configuration.nix
         ./configuration.nix

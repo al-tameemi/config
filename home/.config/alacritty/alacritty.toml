@@ -38,7 +38,7 @@ history = 10000
 multiplier = 3
 
 [terminal.shell]
-program = "fish"
+program = "nu"
 
 [window]
 opacity = 1.0
