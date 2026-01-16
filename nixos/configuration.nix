@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   boot.loader.systemd-boot.enable = lib.mkForce false;
 	system.stateVersion = "24.11";
