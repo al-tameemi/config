@@ -1,28 +1,75 @@
 theme = "dark_plus_no_background"
 
 [editor]
+true-color = true
+bufferline = "always"
 completion-replace = true
-line-number = "relative"
 end-of-line-diagnostics = "hint"
 bufferline = "always"
 
+[editor.whitespace]
+render = "all"
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true
+
 [editor.inline-diagnostics]
 other-lines = "error"
-cursor-line = "error"
+cursor-line = "hint"
 
 [editor.file-picker]
 hidden = false
 
 [editor.lsp]
 display-messages = true
+display-inlay-hints = true
 
 [editor.statusline]
+left = ["mode", "spinner", "read-only-indicator", "file-modification-indicator"]
 center = ["file-name"]
-left = ["mode", "spinner"]
-right = ["diagnostics", "separator", "selections", "separator", "position", "separator", "total-line-numbers", "separator", "file-line-ending", "separator", "file-type"]
+right = ["diagnostics", "selections", "register", "separator", "position", "total-line-numbers", "separator", "file-encoding", "file-type", "file-line-ending",]
 separator = "|"
 
 [editor.statusline.mode]
 insert = "INSERT"
 normal = "NORMAL"
 select = "SELECT"
+
+[keys.normal]
+A-q = ":bc"
+A-S-q = ":bc!"
+S-x = "extend_line_above"
+tab = "indent"
+S-tab = "unindent"
+# Move selection down
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+# Move selection up
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+# Clear window
+C-l = ":redraw"
+C-d = ["search_selection_detect_word_boundaries", "select_mode", "search_next"]
+C-r = ":rl"
+[keys.normal."space"]
+l = ":redraw"
+
+[keys.insert]
+A-q = ":bc"
+A-S-q = ":bc!"
+# Move selection down
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+# Move selection up
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+# Clear window
+C-l = ":redraw"
+C-d = ["search_selection_detect_word_boundaries", "select_mode", "search_next"]
+C-r = ":rl"
+
+[keys.select]
+C-r = ":rl"
