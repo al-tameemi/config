@@ -12,8 +12,6 @@
       ./virt.nix
     ];
   nix.settings.trusted-users = [ "root" "mohammed" ];
-  system.stateVersion = "24.11"; # Keep
-  nix.settings.trusted-users = [ "root" "mohammed" ];
   nix.optimise.automatic = true;
   programs.command-not-found.enable = true;
   

@@ -15,7 +15,6 @@ spawn-at-startup "xwayland-satellite"
 
 cursor {
     xcursor-size 48
-    xcursor-size 32
 }
 
 environment {

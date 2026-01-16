@@ -2,7 +2,6 @@ theme = "dark_plus_no_background"
 
 [editor]
 true-color = true
-bufferline = "always"
 completion-replace = true
 end-of-line-diagnostics = "hint"
 bufferline = "always"
