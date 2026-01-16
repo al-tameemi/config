@@ -61,6 +61,7 @@ let
     devenv
     lldb
     claude-code
+    lldb
     # Currently broken, change later
     # haskellPackages.ghcup
     jetbrains.rust-rover

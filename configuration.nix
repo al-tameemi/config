@@ -11,8 +11,6 @@
       ./boot.nix
       ./virt.nix
     ];
-
-  system.stateVersion = "24.11"; # Keep
   nix.settings.trusted-users = [ "root" "mohammed" ];
   nix.optimise.automatic = true;
   programs.command-not-found.enable = true;
@@ -52,6 +50,8 @@
     SHELL = "${pkgs.nushell}/bin/nu";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     NIXOS_OZONE_WL = "1";
+    PROTON_FSR4_UPGRADE = "1";
+    PROTON_FSR4_INDICATOR = "1";
   };
 
   # Enable flakes
