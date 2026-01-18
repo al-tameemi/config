@@ -1,11 +1,11 @@
-{config, pkgs, ... }:
+{config, pkgs, lib, ... }:
 
 {
   programs.dconf.enable = true;
   
   users.users.mohammed.extraGroups = [ "libvirtd" ];
   
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; lib.mkAfter [
     virt-manager
     virt-viewer
     spice 

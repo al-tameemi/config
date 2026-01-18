@@ -4,17 +4,7 @@ let
   small-unstable = import <nixos-unstable-small> { config = baseconfig; };
 
   mpv-full = (pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; });
-  vscode-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
-    src = (builtins.fetchTarball {
-      url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-      sha256 = "01ln0dv9f3dpvh9q2jplmjv8ldidpxgycl0k5nnrdkkzn28r60y2";
-    });
-    version = "latest";
-
-    buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
-  });
-
-
+  
   fontInstalls = with pkgs; [
     jetbrains-mono
     papirus-icon-theme
@@ -76,7 +66,6 @@ let
     #code-cursor
     zed-editor
     podman-desktop
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   hyprlandInstalls = with pkgs; [
@@ -94,6 +83,7 @@ let
 
   miscInstalls = with pkgs; [
     fuzzel
+    firefox
     foliate
     ungoogled-chromium
     # swaylock
@@ -137,6 +127,45 @@ let
   ];
 in
 {
-  users.users.mohammed.packages = fontInstalls ++ gnomeInstalls ++ gamingInstalls ++ miscInstalls ++ devInstalls ++ hyprlandInstalls;
-  users.users.mohammed.shell = pkgs.nushell;
+  # User applications
+  users.users.mohammed.packages = fontInstalls ++
+                                  gnomeInstalls ++
+                                  gamingInstalls ++
+                                  miscInstalls ++
+                                  devInstalls ++
+                                  hyprlandInstalls;
+
+  # System wide applications
+  environment.systemPackages = with pkgs; [
+    helix
+    tpm2-tss
+    kdiskmark
+    btrfs-progs
+    eza 
+    vim
+    wget
+    curl
+    gparted
+    killall
+    corectrl
+    htop
+    gamemode
+    libiconv 
+    wineWowPackages.waylandFull
+    winetricks
+    kdePackages.polkit-kde-agent-1
+    polkit_gnome
+    gnome-keyring
+    brightnessctl
+    ly
+    cachix
+    xwayland-satellite # For niri xwayland support
+    zoxide
+    gnome-themes-extra
+    inter
+    terminus_font
+    ripgrep
+    sbctl
+    niv
+  ];  
 }

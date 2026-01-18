@@ -1,36 +1,43 @@
 { config, pkgs, inputs, ... }:
 {
-  nix.settings = {
-    download-buffer-size = 524288000; # 500 MiB
-  };
   imports =
     [
-      ./common_mounts.nix
-      ./applications.nix
-      ./user_packages.nix
-      ./boot.nix
-      ./virt.nix
+      ./common/mounts.nix
+      ./common/programs.nix
+      ./common/packages.nix
+      ./common/boot.nix
+      ./common/virt.nix
+      ./common/services.nix
     ];
-  nix.settings.trusted-users = [ "root" "mohammed" ];
-  nix.optimise.automatic = true;
-  programs.command-not-found.enable = true;
-  
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  nix = {
+    settings = {
+      trusted-users = [ "root" "mohammed" ];
+      experimental-features = [ "nix-command" "flakes" ];
+      download-buffer-size = 524288000; # 500 mib
+    };
+    optimise.automatic = true;
+  };
+
+
   # Enable networking
-  networking.networkmanager = {
+  networking = {
+    
+  networkmanager = {
     enable = true;
     plugins = with pkgs; [
       networkmanager-openvpn
     ];
   };
-  networking.extraHosts =
-  ''
-    192.168.1.22 server altamemr01
-    192.168.1.1 router
-  '';
-  # Set your time zone.
-  # time.timeZone = "America/Denver";
-  services.automatic-timezoned.enable = true;
-  
+  extraHosts =
+    ''
+      192.168.1.22 server altamemr01
+      192.168.1.1 router
+    '';
+  };  
   # Select internationalisation
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -49,72 +56,16 @@
   environment.sessionVariables = rec {
     SHELL = "${pkgs.nushell}/bin/nu";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-    NIXOS_OZONE_WL = "1";
     PROTON_FSR4_UPGRADE = "1";
     PROTON_FSR4_INDICATOR = "1";
+    WLR_NO_HARDWARE_CURSOR = "1";
+    NIXOS_OZONE_WL = "1";
   };
-
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  ###################### ENVIRONMENTS #############################
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.defaultSession = "gnome";
-  services.desktopManager.cosmic.enable = true;
-  # services.desktopManager.plasma6.enable = true;
   
-  programs.niri.enable = true; 
-  # Enable KDE desktop environment
-  services.desktopManager.plasma6.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
-  # fix sshaskpass
-  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  hardware = {
+    graphics.enable = true;
   };
-
-  # Sudo requires root password
-  # security.sudo.extraConfig = "Defaults:%wheel rootpw\n";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.brlaser ];
-
-  # Enable sound with pipewire.
-  # sound.enable = true;
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-
-  };
-  services.pulseaudio.zeroconf.discovery.enable = true;
-  services.pulseaudio.zeroconf.publish.enable = true;
   
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   xdg.portal = {
     enable = true;
     # enabled by niri
@@ -126,21 +77,24 @@
     ];
   };
 
-  security.pam.services = {
-    greetd.enableGnomeKeyring = true;
-    greetd-password.enableGnomeKeyring = true;
-    login.enableGnomeKeyring = true;
+  security = {
+    rtkit.enable = true;
+    pam.services = {
+      greetd.enableGnomeKeyring = true;
+      greetd-password.enableGnomeKeyring = true;
+      login.enableGnomeKeyring = true;
+    };
   };
 
-  services.dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
+  users = {
+    users.mohammed = {
+      isNormalUser = true;
+      description = "Mohammed Al-Tameemi";
+      extraGroups = [ "networkmanager" "wheel" ];
+    };
+    defaultUserShell = pkgs.nushell;
+  };
 
-  services.xserver.displayManager.sessionCommands = ''
-    eval $(gnome-keyring-daemon --start --daemonize --components=ssh,secrets)
-    export SSH_AUTH_SOCK
-  '';
-
-  # default shell
-  users.defaultUserShell = pkgs.nushell;
   networking.firewall.enable = false;
 
   systemd.services."prepare-kexec".wantedBy = [ "multi-user.target" ];
