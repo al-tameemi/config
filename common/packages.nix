@@ -1,7 +1,6 @@
 { config, pkgs, fetchzip, inputs, ...}:
 let
-  baseconfig = { allowUnfree = true; };
-  small-unstable = import <nixos-unstable-small> { config = baseconfig; };
+  small-unstable = import <nixos-unstable-small> { config = { allowUnfree = true; }; };
 
   mpv-full = (pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; });
   
@@ -49,6 +48,7 @@ let
     python3
     rustup
     devenv
+    direnv
     lldb
     claude-code
     lldb
@@ -82,6 +82,7 @@ let
   ];
 
   miscInstalls = with pkgs; [
+    openrgb
     fuzzel
     firefox
     foliate
@@ -160,6 +161,8 @@ in
     ly
     cachix
     xwayland-satellite # For niri xwayland support
+    dms-shell
+    dgop
     zoxide
     gnome-themes-extra
     inter

@@ -1,0 +1,590 @@
+clear
+ll
+ls
+clear
+hx /config/applications.nix
+hx /config/user_packages.nix
+hx /config/configuration.nix
+sudo nixos-rebuild switch
+hx ~/.config/nushell/config.nu
+clear
+exit
+nu
+ll
+ls
+clear
+exit
+nu
+exit
+parse 
+echo "test-2" | parse "{label}-{version}"
+clear
+ll
+all
+clear
+ls
+ls | sort
+ls | sort --help
+ls
+ls | sort by size
+ls | sort-by size
+ls | sort
+ls | sort-by size
+ls -a
+ls -l
+clear
+ls -l
+ls -d
+ls --du
+clear
+ll
+clear
+ls
+rm comfy comfy-env/ comfyui/
+rm comfy comfy-env/ comfyui/ -r
+rm comfy comfy-env/ comfyui/ --recursive
+ll
+ls
+rm comfy comfy-env/ -r
+clear
+ll
+ls
+clear
+ll
+clear
+ls
+clear
+ls
+hx 
+clear
+cd /config/
+jj st
+jj log
+hx .config/nushell/config.nu
+clear
+ls
+clear
+exit
+jj --help
+cd /config
+clear
+ls
+jj st
+jj log
+jj bookmark forget sk
+jj config set --user ui.paginate never
+jj st
+cd /config
+jj st
+jj log
+jj resolve
+jj split
+jj st
+jj new main
+ls
+jj commit -m "Clean up"
+jj bookmark new "Nix config cleanup"
+jj bookmark --help
+jj bookmark c "Nix config cleanup"
+jj bookmark c "Nix-config-cleanup"
+jj st
+jj log
+jj rebase --help
+jj rebase
+jj rebase --onto kw
+jj st
+jj log
+jj st
+jj bookmark c
+jj new main
+jj describe -m "Nix config cleanup"
+jj st
+jj log
+ls
+clear
+ll
+ls
+clear
+ls
+ls *.niux
+ls *.nix
+clear
+ls *.nix
+hx .
+sudo nixos-rebuild --help
+sudo nixos-rebuild build-vm-with-bootloader
+sudo nixos-rebuild test
+ls
+cd /config
+clear
+ls
+exit
+hx flake.nix
+clear
+clear
+ls
+cd nixos/
+ls
+clear
+ls
+rm -r ./nix/
+ls
+cd ..
+ls
+c;ear
+clear
+ls
+mkdir common
+ls
+mv common_mounts.nix ./common/
+ls
+mx applications.nix user_packages.nix boot.nix virt.nix ./common/
+mv applications.nix user_packages.nix boot.nix virt.nix ./common/
+ls
+clear
+ls
+cat gdm.nix
+rm gdm.nix
+;s
+clear
+ls
+cat chaotic.nix
+rm chaotic.nix
+ls
+clear
+ls 
+ls dev_flakes/
+rm dev_flakes/
+rm -r dev_flakes/
+ls
+clear
+rm -r result
+ls
+ls -a
+clear
+ls
+hx configuration.nix
+cd common/
+ls
+mv applications.nix programs.nix
+mv user_packages.nix packages.nix
+hx configuration.nix
+sudo nixos-rebuild test
+hx nixos/configuration.nix
+sudo nixos-rebuild test
+hx configuration.nix
+sudo nixos-rebuild test
+cd ../
+sudo nixos-rebuild test
+ls common/
+ll
+clear
+ll
+ls
+ls common/
+cd common/
+mv common_mounts.nix mounts.nix
+ls
+cd ..
+hx configuration.nix
+sudo nixos-rebuild test
+ls /nix/store/px84ims9d8jz7dzdjv1bgrll216glj5g-source/
+jj st
+jj commit -m "Stage 1"
+jj st
+git status
+sudo nixos-rebuild test
+jj diff configuration.nix
+jj config --help
+jj config unset --user ui.paginate never
+jj config unset --user ui.paginate 
+jj st
+jj diff configuration.nix
+jj st
+jj log
+jj diff configuration.nix --from kw --to my
+jj config set --user ui.paginate never
+jj diff configuration.nix --from kw --to my
+jj config unset --user ui.paginate 
+clear
+sudo nixos-rebuild test
+jj diff --from kw --to my ./applications.nix
+jj diff configuration.nix --from kw --to my
+sudo nixos-rebuild test
+sudo nixos-rebuild boot
+reboot
+cd /config
+jj st
+jj squash
+jj st
+jj log
+jj git push -c @-
+ls
+nix flake update
+systemd-analyze
+sudo nixos-rebuild switch 
+sudo systemctl kexec
+systemd-analyze
+systemd-analyze --blame
+systemd-analyze blame
+cd /config
+hx common/programs.nix
+sudo nixos-rebuild switch 
+jj squash
+jj git push -c @-
+cd /config
+ls
+hx configuration.nix
+hx common/services.nix
+sudo nixos-rebuild boot
+reboot
+cd /config
+hx common/services.nix
+grep "gdm" ./*.nix -r
+grep "gdm" ./common/*.nix -r
+grep "gdm" ./*/*.nix -r
+sudo nix-collect-garbage --help
+nixos-rebuild --help
+nixos-rebuild list-generations
+sudo nix-collect-garbage --delete-older-than 2d
+sudo nixos-rebuild boot
+jj st
+jj squash
+sudo nixos-rebuild boot
+nixos-rebuild list-generations
+hx common/services.nix
+sudo nixos-rebuild boot
+nixos-rebuild list-generations
+reboot
+systemd-analyze blame
+clear
+systemd-analyze 
+systemd-analyze blame
+clear
+cd /config
+ls
+hx common/services.nix
+nix flake update
+systemctl list-units --state=failed
+systemctl --failed
+systemd-analyzer blame
+systemd-analyze blame
+systemd-analyze critical-chain
+systemctl status systemd-vconsole-setup.service
+systemd-analyze blame
+systemd-analyze critical-chain
+systemctl status network-setup.service
+systemctl status network-pre.target
+ls
+sudo dmesg
+sudo dmesg | hx
+journalctl -b | grep -E "Reached target|Started|Finished" | head -50
+journalctl -b | grep -i timeout
+ip address
+journalctl -b | grep -i "Timed out"
+claude 
+clear
+cd ~/.config/alacritty/
+ls
+rm alacritty.toml
+mv alacritty.toml.59e78fe6.bak alacritty.toml
+cd -
+clear
+cd /config
+jj diff
+clear
+jj st
+ll diff common
+jj diff common
+jj diff nixos
+sudo nixos-rebuild boot
+reboot
+cd /config/
+ls
+hx common/services.nix
+nixos-rebuild list-generations
+sudo nixos-rebuild switch
+hx common/services.nix
+sudo nixos-rebuild switch
+nixos-rebuild list-generations
+clear
+exit
+ll
+ls
+clear
+cd /config
+jj st
+jj diff common/services.nix
+jj diff nixos/
+jj restore ./common/services.nix
+jj st
+jj squash
+jj git push -c 
+jj log
+jj bookmark c
+jj bookmark c "Nix-config-cleanup"
+jj bookmark set nix-config-cleanup
+jj log
+jj describe -m "Cleaning up the nixos config layout"
+jj git push
+jj git push -c nix-config-cleanup
+jj git push -c -@
+jj git push -c @-
+clear
+jj st
+poweroff
+cd /config
+ls
+clear
+nix flake update
+sudo nixos-rebuild switch
+signal-desktop --password-store="gnome-libsecret"
+hx /config/configuration.nix
+sudo nixos-rebuild switch
+sudo systemctl kexec
+signal-desktop
+sudo systemctl restart display-manager
+cd /config
+ls
+hx configuration.nix
+hx common/services.nix
+reboot
+cd /config
+ls
+cd /config
+sudo nixos-rebuild boot
+ls
+reboot
+cd /config
+ls
+nix flake update
+sudo nixos-rebuild boot
+sudo nixos-rebuild list-generations
+sudo nixos-rebuild boot
+sudo nixos-rebuild list-generations
+reboot
+code PSV_GAMES.tsv
+wineconsole cmd
+nix-shell -p fish
+nix-shell -p dash-mpd-cli
+clear
+nixos-rebuild --help
+cd /config/
+ls
+cd common/
+ls
+hx /etc/nixos/configuration.nix
+ll /etc/
+ls /etc/
+ls /etc/nixos
+hx /config/common/packages.nix
+hx --health nix
+nix-shell -p nil
+clear
+vainfo
+clear
+hx /config/common/packages.nix
+ls
+cd /config
+ls
+grep "codec" ./*.nix
+grep "codec" ./*/*.nix
+ls
+cd /config
+which hx
+ls
+cd common/
+ls /nix/store | where name =~ "sudo"
+ls /nix/store | where name =~ "nixos-rebuild"
+/nix/store/rzw6wnxfmk5pm2yiybh6ld9nxmqwbk4b-sudo-1.9.17p2/bin/sudo /nix/store/w0kwnp10m2fkv7mj814v6kffs80cbb4v-nixos-rebuild-ng-26.05/bin/nixos-rebuild boot
+ls /nix/store | where name =~ "bash"
+/nix/store/rlq03x4cwf8zn73hxaxnx0zn5q9kifls-bash-5.3p3/bin/bash
+$env.PATH ++= ['/run/current-system/sw/bin']
+clear
+sudo nixos-rebuild boot
+networkctl 
+networkctl --hlep
+networkctl --help
+networkctl up eno1
+sudo networkctl up eno1
+bash
+cd /config
+sudo nixos-rebuild boot
+reboot
+systemd-analyze critical-chain
+systemd-analyze --blame
+systemd-analyze blame
+clear
+cd /config
+hx /config/common/packages.nix
+sudo nixos-rebuild switch
+hx /config/common/services.nix
+sudo nixos-rebuild switch
+cd Projects/
+ls
+cargo new feller
+ls
+cd feller/
+ls
+devenv init
+hx devenv.nix
+cd ..
+cd feller/
+ll
+ls
+hx /config/common/packages.nix
+hx .config/nushell/config.nu
+exit
+cd Projects/feller/
+ll
+ls
+hx .envrc
+ll
+cd Projects/feller/
+ll
+ls
+ls -a
+cat .envrc
+exit
+ll
+ls
+clear
+hx ~/.config/nushell/config.nu
+sudo nixos-rebuild switch
+ll
+cd ../feller/
+cd Projects/feller/
+direnv allow
+cd ../feller/
+clear
+cd .config/niri/
+ll
+ls
+niri msg output
+niri msg outputs
+hx config.kdl
+ll
+hx config.kdl
+hx /config/common/packages.nix
+sudo nixos-rebuild switch
+dmsetup --help
+cd .config/niri
+ll
+ls
+cd /config/
+hx /config/common/packages.nix
+sudo nixos-rebuild switch
+systemctl status dms
+dms run
+dms --help
+dms setup
+hx .config/niri/config.kdl
+dms setup
+dms --help
+dms screenshot
+dms keybinds
+dms list
+dms run
+ll
+cd .config/niri
+ll
+ls
+diff ./config.kdl ./config.kdl.backup.2026-02-06_19-41-36
+ll
+ls
+mv config.kdl.backup.2026-02-06_19-41-36 ./config.kdl
+ll
+hx config.kdl
+ll
+cd ../alacritty/
+ll
+ls
+mv alacritty.toml.backup.2026-02-06_19-41-36 ./alacritty.toml
+clear
+hx .config/niri/config.kdl
+exit
+hx config.kdl
+exit
+dms run
+exit
+dms run &
+job spawn { dms run }
+exit
+job spawn { dms run }
+job kill 2
+job --help
+job id
+job list
+exit
+ll
+dms kill
+dms run
+job spawn { dms run }
+exit
+hx .config/niri/config.kdl
+exit
+niri --help
+niri msg --help
+niri msg windows
+cd Pictures/
+ll
+ls
+mkdir wallpapers
+ll
+mv wall*  ./wallpapers/
+ls
+cd .config/niri
+ll
+ls
+clear
+hx config.kdl.backup1770431144
+hx
+dms setup
+ls
+mv config.kdl config.kdl.old
+ls
+rm config.kdl.backup1770431144
+ls
+mv config.kdl.backup.2026-02-06_21-21-52 config.kdl
+ls
+dms --help
+ls
+cd /config
+jj diff
+jj st
+jj diff nixos/mounts.nix
+jj diff ./configuration.nix
+jj diff ./common
+git add ./configuration.nix
+jj diff
+jj st
+nix flake update
+sudo nixos-rebuild switch
+sudo systemctl kexec
+exit
+cd /config
+nix flake update
+sudo nixos-rebuild switch
+fish
+gsettings get org.gnome.mutter
+gsettings get org.gnome.mutter experimental-features
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate', 'variable-refresh-rate]"
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate', 'variable-refresh-rate']"
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer', 'variable-refresh-rate', 'xwayland-native-scaling']"
+gsettings set org.gnome.mutter experimental-features "['variable-refresh-rate']"
+cd /confg
+cd /config
+ll
+ls
+hx .gitignore
+jj st
+cat nixos/mounts.nix
+hx nixos/mounts.nix
+ll
+ls
+claude .
+ll
+clear
+ls
+jj st
+jj commit -m "More stage 1"

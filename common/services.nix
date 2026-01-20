@@ -11,8 +11,10 @@
           '';
     };
 
+    hardware.openrgb.enable = true;
+
     displayManager = {
-      cosmic-greeter.enable = true;
+      gdm.enable = true;
       defaultSession = "gnome";
     };
 

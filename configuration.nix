@@ -60,6 +60,7 @@
     PROTON_FSR4_INDICATOR = "1";
     WLR_NO_HARDWARE_CURSOR = "1";
     NIXOS_OZONE_WL = "1";
+    KWIN_TRIPLE_BUFFER = "1";
   };
   
   hardware = {
