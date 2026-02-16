@@ -1,5 +1,6 @@
 **/result
 home/.config/*
+home/.config/nushell/history.txt
 !home/.config/alacritty
 !home/.config/eww
 !home/.config/fish
@@ -9,7 +10,6 @@ home/.config/*
 !home/.config/mako
 !home/.config/niri
 !home/.config/nushell
-!home/.config/nushell/history.txt
 !home/.config/rofi
 !home/.config/swayidle
 !home/.config/swaylock
