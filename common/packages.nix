@@ -152,7 +152,7 @@ in
     htop
     gamemode
     libiconv 
-    wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
     kdePackages.polkit-kde-agent-1
     polkit_gnome

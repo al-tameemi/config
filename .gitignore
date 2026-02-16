@@ -9,6 +9,7 @@ home/.config/*
 !home/.config/mako
 !home/.config/niri
 !home/.config/nushell
+!home/.config/nushell/history.txt
 !home/.config/rofi
 !home/.config/swayidle
 !home/.config/swaylock

@@ -16,17 +16,14 @@
 #
 # You can remove these comments if you want or leave
 # them for future reference.
-#
-# let fish_completer = {|spans|
-#     fish --command $'complete "--do-complete=($spans | str join " ")"'
-#     | from tsv --flexible --noheaders --no-infer
-#     | rename value description
-# }
 use std/config *
 
-let carapace_completer = {|spans|
-    carapace $spans.0 nushell ...$spans | from json
+$env.config.hooks.command_not_found = {
+  |command_name|
+  print (command-not-found $command_name | str trim)
 }
+
+$env.config.buffer_editor = "hx"
 
 # Initialize the PWD hook as an empty list if it doesn't exist
 $env.config.hooks.env_change.PWD = $env.config.hooks.env_change.PWD? | default []

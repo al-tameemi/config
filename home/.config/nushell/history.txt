@@ -588,3 +588,13 @@ clear
 ls
 jj st
 jj commit -m "More stage 1"
+jj restore home/.config/nushell/history.txt
+jj st
+jj reset home/.config/nushell/history.txt
+jj revert home/.config/nushell/history.txt
+jj st
+sudo nixos-rebuild switch
+hx common/packages.nix
+sudo nixos-rebuild switch
+ll
+jj st
