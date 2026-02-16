@@ -11,6 +11,8 @@
 	boot.plymouth.enable = true;
 	services.fwupd.enable = true;
 	services.power-profiles-daemon.enable = true;
+	services.upower.enable = true;
+  hardware.bluetooth.enable = true;
 
 	# services.grafana = {
 	#   enable = true;
