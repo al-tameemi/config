@@ -1,6 +1,5 @@
 **/result
 home/.config/*
-home/.config/nushell/history.txt
 !home/.config/alacritty
 !home/.config/eww
 !home/.config/fish
@@ -14,3 +13,4 @@ home/.config/nushell/history.txt
 !home/.config/swayidle
 !home/.config/swaylock
 !home/.config/waybar
+home/.config/nushell/history.txt
