@@ -14,8 +14,6 @@
 	services.upower.enable = true;
   hardware.bluetooth.enable = true;
 
-  environment.shells = [ pkgs.nushell ];
-
 	# services.grafana = {
 	#   enable = true;
 	#   settings = {
