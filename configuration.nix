@@ -25,18 +25,17 @@
 
   # Enable networking
   networking = {
-    
-  networkmanager = {
-    enable = true;
-    plugins = with pkgs; [
-      networkmanager-openvpn
-    ];
-  };
-  extraHosts =
-    ''
-      192.168.1.22 server altamemr01
-      192.168.1.1 router
-    '';
+    networkmanager = {
+      enable = true;
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
+    };
+    extraHosts =
+      ''
+        192.168.1.22 server altamemr01
+        192.168.1.1 router
+      '';
   };  
   # Select internationalisation
   i18n.defaultLocale = "en_US.UTF-8";
