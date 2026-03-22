@@ -82,6 +82,7 @@ let
   ];
 
   miscInstalls = with pkgs; [
+    dix
     openrgb
     fuzzel
     firefox
