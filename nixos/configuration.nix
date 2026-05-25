@@ -4,6 +4,12 @@
 		./hardware-configuration.nix
 		./mounts.nix
 	];
+  modules.username = "mohammed";
+  modules.boot.silent = true;
+  modules.desktop.enable = true;
+  modules.desktop.dev.enable = true;
+  modules.services.desktop.enable = true;
+  modules.virt.gui.enable = true;
 	system.stateVersion = "24.11";
 
 	boot = {
