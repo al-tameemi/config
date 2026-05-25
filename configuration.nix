@@ -1,45 +1,45 @@
 { config, pkgs, inputs, ... }:
 {
-  imports =
-    [
-      ./common/mounts.nix
-      ./common/programs.nix
-      ./common/packages.nix
-      ./common/boot.nix
-      ./common/virt.nix
-      ./common/services.nix
-    ];
+  imports = [
+    ./common/mounts.nix
+    ./common/packages
+    ./common/boot.nix
+    ./common/virt.nix
+    ./common/services.nix
+    ./common/desktop-services.nix
+    ./common/desktop.nix
+  ];
 
-  # Allow unfree packages
+  modules.general.enable = true;
+  modules.boot.enable = true;
+  modules.mounts.enable = true;
+  modules.services.enable = true;
+  modules.virt.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
     settings = {
-      trusted-users = [ "root" "mohammed" ];
+      trusted-users = [ "root" config.modules.username ];
       experimental-features = [ "nix-command" "flakes" ];
       download-buffer-size = 524288000; # 500 mib
     };
     optimise.automatic = true;
   };
 
-
-  # Enable networking
   networking = {
     networkmanager = {
       enable = true;
-      plugins = with pkgs; [
-        networkmanager-openvpn
-      ];
+      plugins = with pkgs; [ networkmanager-openvpn ];
     };
-    extraHosts =
-      ''
-        192.168.1.22 server altamemr01
-        192.168.1.1 router
-      '';
-  };  
-  # Select internationalisation
-  i18n.defaultLocale = "en_US.UTF-8";
+    extraHosts = ''
+      192.168.1.22 server altamemr01
+      192.168.1.1 router
+    '';
+    firewall.enable = false;
+  };
 
+  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -54,51 +54,17 @@
 
   environment = {
     shells = [ pkgs.nushell ];
-    sessionVariables = rec {
-      SHELL = "${pkgs.nushell}/bin/nu";
-      PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-      PROTON_FSR4_UPGRADE = "1";
-      PROTON_FSR4_INDICATOR = "1";
-      WLR_NO_HARDWARE_CURSOR = "1";
-      NIXOS_OZONE_WL = "1";
-      KWIN_TRIPLE_BUFFER = "1";
-    };
-  };
-  
-  hardware = {
-    graphics.enable = true;
-  };
-  
-  xdg.portal = {
-    enable = true;
-    # enabled by niri
-    # wlr.enable = true;
-    extraPortals = with pkgs; [
-      # xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-  };
-
-  security = {
-    rtkit.enable = true;
-    pam.services = {
-      greetd.enableGnomeKeyring = true;
-      greetd-password.enableGnomeKeyring = true;
-      login.enableGnomeKeyring = true;
-    };
+    sessionVariables.SHELL = "${pkgs.nushell}/bin/nu";
   };
 
   users = {
-    users.mohammed = {
+    users.${config.modules.username} = {
       isNormalUser = true;
       description = "Mohammed Al-Tameemi";
       extraGroups = [ "networkmanager" "wheel" ];
     };
     defaultUserShell = pkgs.nushell;
   };
-
-  networking.firewall.enable = false;
 
   systemd.services."prepare-kexec".wantedBy = [ "multi-user.target" ];
 }

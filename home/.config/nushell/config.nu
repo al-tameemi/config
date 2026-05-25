@@ -28,13 +28,38 @@ $env.config.buffer_editor = "hx"
 # Initialize the PWD hook as an empty list if it doesn't exist
 $env.config.hooks.env_change.PWD = $env.config.hooks.env_change.PWD? | default []
 
-$env.config.hooks.env_change.PWD ++= [{||
-  if (which direnv | is-empty) {
-    # If direnv isn't installed, do nothing
-    return
-  }
+devenv hook nu | save --force ~/.config/nushell/devenv_hook.nu
+source ~/.config/nushell/devenv_hook.nu
 
-  direnv export json | from json | default {} | load-env
-  # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
-  $env.PATH = do (env-conversions).path.from_string $env.PATH
-}]
+# $env.config.hooks.env_change.PWD ++= [{||
+#   if (which direnv | is-empty) {
+#     # If direnv isn't installed, do nothing
+#     return
+#   }
+
+#   direnv export json | from json | default {} | load-env
+#   # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
+#   $env.PATH = do (env-conversions).path.from_string $env.PATH
+# }]
+
+alias watts = print $"((cat /sys/class/power_supply/BAT1/current_now | into int ) * (cat /sys/class/power_supply/BAT1/voltage_now | into int) / 1e12 | into string --decimals 2)W";
+
+def sconf [pattern: string] {
+  rg $pattern /config/*/*.nix
+}
+
+def ll [
+    ...args
+    --all (-a)
+    --du (-d)
+    --full-paths (-f)
+    --mime-type (-m)
+    --short-names (-s)
+    --threads (-t)
+] {
+  if ($args | is-empty) {
+    ls -l --all=$all --du=$du --full-paths=$full_paths --mime-type=$mime_type --short-names=$short_names --threads=$threads
+  } else {
+    ls -l ...$args --all=$all --du=$du --full-paths=$full_paths --mime-type=$mime_type --short-names=$short_names --threads=$threads
+  }
+}
