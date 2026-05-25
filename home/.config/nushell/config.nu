@@ -38,3 +38,10 @@ $env.config.hooks.env_change.PWD ++= [{||
   # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
   $env.PATH = do (env-conversions).path.from_string $env.PATH
 }]
+
+alias watts = print $"((cat /sys/class/power_supply/BAT1/current_now | into int ) * (cat /sys/class/power_supply/BAT1/voltage_now | into int) / 1e12 | into string --decimals 2)W";
+
+def sconf [pattern: string] {
+  rg $pattern /config/*/*.nix
+}
+

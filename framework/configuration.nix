@@ -1,6 +1,12 @@
 
 { config, pkgs, ... }:
 {
+  modules.username = "mohammed";
+  modules.boot.silent = true;
+  modules.desktop.enable = true;
+  modules.desktop.dev.enable = true;
+  modules.services.desktop.enable = true;
+  modules.virt.gui.enable = true;
   boot.loader.systemd-boot.enable = true;
 	networking.hostName = "framework";
 	system.stateVersion = "24.11";
