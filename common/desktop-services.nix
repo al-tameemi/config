@@ -31,7 +31,13 @@
 
       printing = {
         enable = true;
-        drivers = [ pkgs.brlaser ];
+        drivers = [ pkgs.brlaser pkgs.brgenml1lpr pkgs.brgenml1cupswrapper  ];
+      };
+
+      avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
       };
 
       pipewire = {
