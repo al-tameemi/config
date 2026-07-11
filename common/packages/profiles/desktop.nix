@@ -37,6 +37,7 @@ in
     modules.cli-utils.enable = true;
     modules.hardware.enable = true;
     modules.wine.enable = true;
+    modules.vpn.enable = true;
 
     modules.dev.minimal.enable = cfg.dev.enable;
     modules.dev.editors.gui.enable = cfg.dev.enable;

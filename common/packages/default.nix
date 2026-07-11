@@ -22,6 +22,9 @@
     ./cli/cli-utils.nix
     ./cli/misc.nix
 
+    # VPN
+    ./vpn.nix
+
     # Apps
     ./browsers.nix
     ./documents.nix

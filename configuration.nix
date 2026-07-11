@@ -36,7 +36,10 @@
       192.168.1.22 server altamemr01
       192.168.1.1 router
     '';
-    firewall.enable = false;
+    firewall = {
+      enable = true;
+      checkReversePath = false;
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";

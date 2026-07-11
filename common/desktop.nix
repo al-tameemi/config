@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 {
+  imports = [ ./programs-sqlite.nix ];
+
   config = lib.mkIf config.modules.desktop.enable {
+    modules.programs-sqlite.enable = true;
+
     hardware.graphics.enable = true;
 
     xdg.portal = {
