@@ -31,37 +31,44 @@
 
   fileSystems."/home/mohammed/Documents" = {
     device = "/drives/NVME0/Home/Documents";
+    fsType = "none";
     options = ["bind"];
   };
 
   fileSystems."/home/mohammed/.cache" = {
     device = "/drives/NVME0/Home/.cache";
+    fsType = "none";
     options = ["bind"];
   };
 
   fileSystems."/home/mohammed/Downloads" = {
     device = "/drives/NVME0/Home/Downloads";
+    fsType = "none";
     options = ["bind"];
   };
 
   fileSystems."/home/mohammed/Music" = {
     device = "/drives/NVME0/Home/Music";
+    fsType = "none";
     options = ["bind"];
   };
 
   
   fileSystems."/home/mohammed/Pictures" = {
     device = "/drives/NVME0/Home/Pictures";
+    fsType = "none";
     options = ["bind"];
   };
   
   fileSystems."/home/mohammed/Projects" = {
     device = "/drives/NVME0/Home/Projects";
+    fsType = "none";
     options = ["bind"];
   };
   
   fileSystems."/home/mohammed/Videos" = {
     device = "/drives/NVME0/Home/Videos";
+    fsType = "none";
     options = ["bind"];
   };
 }
