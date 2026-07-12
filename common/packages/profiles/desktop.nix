@@ -16,7 +16,13 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.java.enable = true;
-    programs.nix-ld.enable = true;
+    programs.nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        stdenv.cc.cc.lib zlib libdrm numactl elfutils
+        libgcc.lib openssl libglvnd
+      ];
+    };
     programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
 
     modules.fonts.enable = true;

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   cfg = config.modules.gaming;
 in
@@ -14,6 +14,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.steam = {
       enable = true;
+      protontricks.enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       package = pkgs.steam.override {
@@ -24,11 +25,16 @@ in
       };
     };
 
+    # Used by piper
+    services.ratbagd.enable = true;
+
     users.users.${config.modules.username}.packages = with pkgs; [
       discord
       mangohud
       gamescope
       gamemode
+      prismlauncher
+      piper
     ]
     ++ lib.optionals cfg.extra-launchers.enable [ lutris bottles heroic ]
     ++ lib.optionals cfg.proton-extra.enable [ protonplus protonup-qt ]

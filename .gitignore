@@ -1,4 +1,5 @@
 **/result
+.claude/
 home/.config/*
 !home/.config/alacritty
 !home/.config/eww

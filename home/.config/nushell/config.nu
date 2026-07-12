@@ -48,6 +48,16 @@ def sconf [pattern: string] {
   rg $pattern /config/*/*.nix
 }
 
+def watch-cmd [cmd: closure, --interval (-n): duration] {
+  let wait = ($interval | default 1sec)
+  loop {
+    let out = (do $cmd | table)
+    clear
+    print $out
+    sleep $wait
+  }
+}
+
 def ll [
     ...args
     --all (-a)
