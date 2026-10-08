@@ -28,6 +28,7 @@
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       PROTON_FSR4_UPGRADE = "1";
       PROTON_FSR4_INDICATOR = "1";
+      PROTON_ENABLE_WAYLAND = "1";
       WLR_NO_HARDWARE_CURSOR = "1";
       NIXOS_OZONE_WL = "1";
       KWIN_TRIPLE_BUFFER = "1";

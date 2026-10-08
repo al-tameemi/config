@@ -1,13 +1,13 @@
 { config, lib, pkgs, ... }:
-let
-  mpv-full = pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; };
-in
+# let
+  # mpv-full = pkgs.mpv-unwrapped.override { ffmpeg = pkgs.ffmpeg-full; };
+# in
 {
   options.modules.media.enable = lib.mkEnableOption "media packages";
 
   config = lib.mkIf config.modules.media.enable {
     users.users.${config.modules.username}.packages = with pkgs; [
-      mpv-full
+      mpv
       ffmpeg
       pavucontrol
       easyeffects
