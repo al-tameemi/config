@@ -1,145 +1,97 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "margin": "0 0 0 0",
-    // Choose the order of the modules
-    "modules-left": ["cpu", "custom/mem"],
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+
+    "modules-left": ["niri/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "tray", "backlight", "battery", "custom/power"],
+    "modules-right": [
+        "tray",
+        "pulseaudio#out",
+        "custom/mic",
+        "network#eth",
+        "network#wifi",
+        "custom/power"
+    ],
 
-
-    //***************************
-    //*  Modules configuration  *
-    //***************************
-
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-    },
-
-    "hyprland/language": {
-        "format-en": "US",
-    	"min-length": 5,
-    	"tooltip": false
-    },
-
-    "keyboard-state": {
-        //"numlock": true,
-        "capslock": true,
-        "format": "{icon} ",
+    "niri/workspaces": {
+        "format": "{icon}",
         "format-icons": {
-            "locked": " ",
-            "unlocked": ""
-        },
-    },
-
-    "custom/power": {
-        "format": "{icon}",
-        "format-icons": [""],
-        "tooltip": false,
-        // "on-click": "/home/mohammed/.local/bin/power_menu -m 'Are you sure you want to leave?'",
-        "on-click": "niri msg -j action quit"
-    },
-
-    "custom/restart": {
-        "format": "{icon}",
-        "format-icons": [""],
-        "tooltip": true,
-        "tooltip-format": "reboot",
-        "on-click": "confirmation_rs -c 'systemctl' -m 'Do you really want to reboot?' -d 'No' -s 'Yes' -a 'reboot'",
-    },
-
-    "custom/logout": {
-        "format": "{icon}", 
-        "format-icons": ["󰗽"],
-        "on-click": "confirmation_rs -c 'hyprctl' -m 'Do you really want to logout?' -d 'No' -s 'Yes' -a 'dispatch exit'",
-    },
-
-    "custom/mail": {
-        "format": "{} ",
-        "exec": "$HOME/.config/waybar/scripts/checkgmail.py",
-        "interval": 120,
-        "on-click": "google-chrome-stable https://mail.google.com/mail/u/0/#inbox ; pkill -SIGRTMIN+9 waybar",
-        "signal": 9,
-        "tooltip": false,
-    },
-
-    "hyprland/submap": {
-        "format": "pon {}"
+            "active": "<span size='large'></span>",
+            "default": "<span size='large'></span>",
+            "empty": "<span size='large'></span>"
+        }
     },
 
     "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a, %d %b, %I:%M %p}",
-        "on-click": "makoctl restore",
+        "format": "{:%a %d %b  %H:%M}",
+        "format-alt": "{:%Y-%m-%d  %H:%M:%S}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "interval": 1
     },
 
-    "battery": {
-        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-        "format-icons": ["", "", "", "", ""],
-        "format-time": "{H}h{M}m",
-        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-        "interval": 30,
-        "states": {
-            "warning": 25,
-            "critical": 10
-        },
-        "tooltip": false,
-    },
-
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-alt": "{percent}% {icon}",
-        "format-alt-click": "click-right",
-    },
-
-    // "custom/weather": {
-    //     "format": "{}",
-    //     "tooltip": true,
-    //     "interval": 1800,
-    //     "exec": "$HOME/.config/waybar/scripts/wttr.py",
-    //     "return-type": "json"
-    // },
-
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "reverse-scrolling": 1,
-        "format": "{volume}% {icon}   {format_source}",
-        "format-bluetooth": "{volume}% {icon}  {format_source}",
-        "format-bluetooth-muted": " {icon}  {format_source}",
-        "format-muted": "   {format_source}",
-        "format-source": " {volume}% ",
-        "format-source-muted": "",
+    // Output volume: scroll = +/-5%, click = mute, right-click = mixer
+    "pulseaudio#out": {
+        "format": "{icon} {volume}%",
+        "format-muted": "<span size='large'></span> muted",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "<span size='large'></span>",
+            "default": ["<span size='large'></span>", "<span size='large'></span>", "<span size='large'></span>"]
         },
-        "on-click": "pavucontrol",
-        "min-length": 13,
+        "scroll-step": 5,
+        "max-volume": 100,
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "tooltip-format": "{desc}"
     },
 
-    "custom/mem": {
-        "format": "{}  ",
-        "interval": 3,
-        "exec": "free -h | awk '/Mem:/{printf $3}'",
-        "tooltip": false,
+    // Input volume: scroll = +/-5%, click = mute, right-click = mixer
+    "custom/mic": {
+        "exec": "~/.config/waybar/scripts/mic.sh",
+        "return-type": "json",
+        "interval": 2,
+        "signal": 8,
+        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SOURCE@ 5%+; pkill -RTMIN+8 waybar",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; pkill -RTMIN+8 waybar",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; pkill -RTMIN+8 waybar",
+        "on-click-right": "pavucontrol --tab=4"
     },
 
-    "cpu": {
-      "interval": 2,
-      "format": "{usage}%  ",
-      "min-length": 4
+    "network#eth": {
+        "interface": "eno1",
+        "format-ethernet": "<span size='large'></span> {ipaddr}",
+        "format-disconnected": "<span size='large'></span> down",
+        "format-linked": "<span size='large'></span> no IP",
+        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}\n↑ {bandwidthUpBytes}  ↓ {bandwidthDownBytes}",
+        "interval": 5
     },
 
+    // Click opens a fuzzel menu listing nearby Wi-Fi networks
+    "network#wifi": {
+        "interface": "wlp13s0",
+        "format-wifi": "<span size='large'></span> {essid} ({signalStrength}%)",
+        "format-disconnected": "<span size='large'></span> off",
+        "format-disabled": "<span size='large'></span> off",
+        "tooltip-format-wifi": "{essid}\n{ipaddr}\nSignal: {signalStrength}%  {frequency} GHz",
+        "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+        "on-click-right": "nm-connection-editor",
+        "interval": 5
+    },
+
+    // System tray: right-click an icon (Steam, Discord, ...) for Exit/Quit
     "tray": {
-        "icon-size": 16,
-        "spacing": 8
+        "icon-size": 20,
+        "spacing": 10,
+        "show-passive-items": true
     },
-}
 
+    "custom/power": {
+        "format": "<span size='large'></span>",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/power-menu.sh"
+    }
+}

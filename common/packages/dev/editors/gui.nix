@@ -5,7 +5,7 @@
   config = lib.mkIf config.modules.dev.editors.gui.enable {
     users.users.${config.modules.username}.packages = with pkgs; [
       jetbrains.rust-rover
-      vscode
+      # vscode
       # code-cursor
       zed-editor
     ];

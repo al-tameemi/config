@@ -10,7 +10,17 @@
     ];
 
     users.users.${config.modules.username}.packages = with pkgs; [
-      signal-desktop
+      # Electron picks "basic" password storage under niri (unknown XDG_CURRENT_DESKTOP),
+      # which can't read the key Signal saved in GNOME Keyring. Force libsecret.
+      (symlinkJoin {
+        name = "signal-desktop";
+        paths = [ signal-desktop ];
+        nativeBuildInputs = [ makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/signal-desktop \
+            --add-flags "--password-store=gnome-libsecret"
+        '';
+      })
     ];
   };
 }

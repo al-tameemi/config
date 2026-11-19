@@ -1,12 +1,51 @@
+# swaylock-effects — blurred wallpaper, clock, soft ring indicator
+daemonize
+ignore-empty-password
+show-failed-attempts
+fade-in=0.15
+grace=0
+
+# Background: pre-blurred by make-bg.sh (no blur work at lock time)
+image=/home/mohammed/.cache/swaylock-bg.jpg
+scaling=fill
+color=0e0f14
+
+# Clock
 clock
+timestr=%H:%M
+datestr=%A, %d %B
+
+# Fonts
+font=JetBrains Mono
+font-size=34
+
+# Indicator: no visible circle, just the clock text.
+# The ring is only visible briefly as typing/error feedback.
 indicator
-color=000000ff
-grace=2
-inside-color=2c2c2cff
+indicator-radius=110
+indicator-thickness=3
+indicator-caps-lock
+
+inside-color=00000000
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+ring-color=00000000
+ring-clear-color=00000000
+ring-ver-color=a9b8f0
+ring-wrong-color=e07a8a
 line-color=00000000
-ring-color=75ccffff
-key-hl-color=ffffff
-image=./Pictures/wallhaven-gpee1q.jpg
-effect-blur=20x10
-effect-vignette=0.5:0.5
-text-color=ffffff
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+separator-color=00000000
+
+text-color=f2eef8
+text-clear-color=f2eef8
+text-ver-color=a9b8f0
+text-wrong-color=e07a8a
+
+key-hl-color=a9b8f0
+bs-hl-color=e07a8a
+caps-lock-key-hl-color=e5a98a
+caps-lock-bs-hl-color=e07a8a

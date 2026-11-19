@@ -45,14 +45,16 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        jack.enable = true;
       };
 
       pulseaudio.enable = false;
 
-      dbus.packages = [ pkgs.gnome-keyring pkgs.gcr ];
+      dbus.packages = [ pkgs.gnome-keyring pkgs.gcr_3 ];
 
       flatpak.enable = true;
     };
+
+    # JACK apps: run them via `pw-jack <app>` (replaces the deprecated pipewire.jack.enable)
+    environment.systemPackages = [ pkgs.pipewire.jack ];
   };
 }
