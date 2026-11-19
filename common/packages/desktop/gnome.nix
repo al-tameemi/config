@@ -7,13 +7,10 @@
       gnome-themes-extra
       gimp
       gnome-tweaks
-      gnomeExtensions.clipboard-indicator
       gnomeExtensions.dash-to-dock
-      gnomeExtensions.pano
       gnomeExtensions.blur-my-shell
       gnomeExtensions.appindicator
       gnomeExtensions.status-icons
-      gnomeExtensions.all-in-one-clipboard
       gnomeExtensions.clipboard-history
     ];
   };

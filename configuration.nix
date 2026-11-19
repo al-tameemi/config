@@ -1,6 +1,8 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
+    ./common/locale.nix
+    ./common/nix.nix
     ./common/mounts.nix
     ./common/packages
     ./common/boot.nix
@@ -20,11 +22,8 @@
 
   nix = {
     settings = {
-      trusted-users = [ "root" config.modules.username ];
-      experimental-features = [ "nix-command" "flakes" ];
       download-buffer-size = 524288000; # 500 mib
     };
-    optimise.automatic = true;
   };
 
   networking = {
@@ -40,19 +39,6 @@
       enable = true;
       checkReversePath = false;
     };
-  };
-
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
   };
 
   environment = {

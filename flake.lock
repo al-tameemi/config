@@ -178,7 +178,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-minipc": {
+    "nixpkgs-server": {
       "locked": {
         "lastModified": 1794872590,
         "narHash": "sha256-E+XLAfnC7+bdr4qlEgRv6cdGmiqTU5oeFNKCha7epqQ=",
@@ -252,7 +252,7 @@
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-minipc": "nixpkgs-minipc"
+        "nixpkgs-server": "nixpkgs-server"
       }
     },
     "rust-overlay": {

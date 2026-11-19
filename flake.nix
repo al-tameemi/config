@@ -3,9 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Separate, stable pin used only by the minipc server (see nixosConfigurations.minipc).
+    # Separate, stable pin used only by server hosts (see mkServer below).
     # Bump to a new release branch deliberately; `nix flake update` only moves the rev within it.
-    nixpkgs-minipc.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-server.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.2.0";
@@ -19,7 +19,19 @@
     comfy-portal.url = "git+ssh://git@github.com/al-tameemi/comfy-portal.git";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, lanzaboote, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-hardware, lanzaboote, ... }@inputs:
+  let
+    # Headless server on the stable nixpkgs-server pin. Hostname = attribute name;
+    # host-specific config lives in ./<name>/configuration.nix.
+    mkServer = name: extraModules: inputs.nixpkgs-server.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./common/server
+        { networking.hostName = name; }
+        (./. + "/${name}/configuration.nix")
+      ] ++ extraModules;
+    };
+  in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -48,11 +60,6 @@
       ];
     };
 
-    # Headless server on its own stable nixpkgs; deliberately does not import the
-    # shared desktop ./configuration.nix.
-    nixosConfigurations.minipc = inputs.nixpkgs-minipc.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [ ./minipc/configuration.nix ];
-    };
+    nixosConfigurations.minipc = mkServer "minipc" [ ];
   };
 }
