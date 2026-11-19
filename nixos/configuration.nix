@@ -12,6 +12,10 @@
   modules.virt.gui.enable = true;
 	system.stateVersion = "24.11";
 
+	services.displayManager.gdm.autoSuspend = false;
+
+	modules.niri.enable = true;
+
 	nix.settings = {
 		substituters = [
 			"https://nix-community.cachix.org"
@@ -62,9 +66,39 @@
 		udev.extraRules = ''
 			ACTION=="add", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c547", ATTR{power/wakeup}="disabled"
 		'';
-		scx = {
+		scx-loader = {
 			enable = true;
-			scheduler = "scx_bpfland";
+			config = {
+				default_sched = "scx_lavd";
+				default_mode = "Gaming";
+				scheds.scx_lavd.gaming_mode = [ "--performance" ];
+			};
+		};
+		comfy-portal = {
+			enable = true;
+			port = 9090;
+			comfyDir = "/drives/NVME2/ComfyUI";
+			launchCmd = [
+				"/drives/NVME2/ComfyUI/.venv/bin/python" "main.py"
+				"--use-pytorch-cross-attention" "--enable-manager" "--listen"
+				"--reserve-vram" "2.0"
+				"--disable-pinned-memory"
+			];
+			openFirewall = true;
+
+			soundsDir = "/drives/NVME2/sounds";
+			
+			extraPackages = [ pkgs.git pkgs.gcc ];
+
+			extraEnvironment = {
+				CC = "${pkgs.gcc}/bin/gcc";
+				MIOPEN_FIND_MODE = "FAST";
+				SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
+				REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
+			};
+
+			user = "mohammed";
+			group = "users";
 		};
 	};
 
