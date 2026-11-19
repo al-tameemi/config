@@ -12,8 +12,12 @@ Build/deploy:
 
 ```sh
 sudo nixos-rebuild switch --flake /config#nixos        # or #framework
-nixos-rebuild switch --flake .#minipc --target-host mohammed@minipc.local --sudo
+nixos-rebuild switch --flake .#minipc --target-host mohammed@minipc.local --sudo --ask-sudo-password
 ```
+
+`minipc.local` works because the server publishes its hostname over mDNS (avahi), so no IP is needed. The sudo password is asked on every deploy (passwordless sudo is deliberately not enabled).
+
+**Bootstrapping a new server:** the first deploy to a machine still running a stock install fails with `lacks a signature by a trusted key`, because the target's nix daemon doesn't yet trust your user. Add `nix.settings.trusted-users = [ "root" "<user>" ];` to its `/etc/nixos` config and `nixos-rebuild switch` once on the box. After that the flake config sets it (via `common/nix.nix`). Until the new host publishes `<name>.local`, deploy to its IP.
 
 ## Layout
 
